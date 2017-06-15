@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--  "Innovation, Demand, and Finance in an Agent Based-Stock Flow Consistent model" 
+Caiani, A., Godin, A., Caverzasi, E., Ricetti, L., Russo, A., Gallegati, M., Kinsella, S., Stiglitz, J.
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<import resource="ModelInnovationDistributionUpdated.xml"/>
+	<import resource="reports3.xml" />
+	
+	<bean id="simulationController" 
+			class="net.sourceforge.jabm.SpringSimulationController"
+			scope="singleton">
+			
+		<property name="simulationBeanName">
+		   <idref local="macroSimulation"/>
+		</property>
+	
+		<property name="numSimulations" value="3"/>	
+		
+		<property name="reports">
+			<list>
+				<!-- <ref bean="nominalGDPEventReport" />
+				<ref bean="nominalGDPTimeSeriesChart" />
+				<ref bean="nominalGDPCSVReport" />
+				
+				<ref bean="nominalInvestmentEventReport" />
+				<ref bean="nominalInvestmentTimeSeriesChart" />
+				<ref bean="nominalInvestmentCSVReport" />
+				
+				<ref bean="cAvPriceEventReport" />
+				<ref bean="cAvPriceCSVReport" />
+				<ref bean="kAvPriceEventReport" />
+				<ref bean="kAvPriceCSVReport" />
+				<ref bean="loanAvInterestEventReport" />
+				<ref bean="loanAvInterestCSVReport" />
+				<ref bean="depAvInterestEventReport" />
+				<ref bean="depAvInterestCSVReport" />
+				
+				<ref bean="avWorkerWageEventReport" />
+				<ref bean="avManagerWageEventReport" />
+				<ref bean="avTopManagerWageEventReport" />
+				<ref bean="avResearchersWageEventReport" />
+				<ref bean="avWorkerWageCSVReport" />
+				<ref bean="avManagerWageCSVReport" />
+				<ref bean="avTopManagerWageCSVReport" />
+				<ref bean="avResearchersWageCSVReport" />
+				<ref bean="avWorkerNetIncomeEventReport" />
+				<ref bean="avManagersNetIncomeEventReport" />
+				<ref bean="avTopManagersNetIncomeEventReport" />
+				<ref bean="avResearchersNetIncomeEventReport" />
+				<ref bean="avWorkerNetIncomeCSVReport" />
+				<ref bean="avManagersNetIncomeCSVReport" />
+				<ref bean="avTopManagersNetIncomeCSVReport" />
+				<ref bean="avResearchersNetIncomeCSVReport" />
+			
+				<ref bean="cAggConsCreditEventReport" />
+				<ref bean="cAggConsCreditCSVReport" />
+				<ref bean="kAggConsCreditEventReport" />
+				<ref bean="kAggConsCreditCSVReport" />
+				<ref bean="microLoansKTimeSeriesChart" />
+				<ref bean="loanKEventReport" />
+				<ref bean="microLoansKCSVReport" />
+				<ref bean="loanCEventReport" />
+				<ref bean="microLoansCCSVReport" />
+				<ref bean="microCreditObtainedKEventReport" />
+				<ref bean="microCreditObtainedKCSVReport" />
+				<ref bean="microCreditObtainedCEventReport" />
+				<ref bean="microCreditObtainedCCSVReport" />
+				<ref bean="cAggregateDebtEventReport" />
+				<ref bean="cAggregateDebtCSVReport" />
+				<ref bean="kAggregateDebtEventReport" />
+				<ref bean="kAggregateDebtCSVReport" />
+				<ref bean="cFirmsConsCredEventReport" />
+				<ref bean="cFirmsConsCredCSVReport" />
+				<ref bean="kFirmsConsCredEventReport" />
+				<ref bean="kFirmsConsCredCSVReport" />
+				
+				<ref bean="unemploymentEventReport" />
+				<ref bean="unemploymentTimeSeriesChart" />
+				<ref bean="unemploymentCSVReport" />
+				<ref bean="unemploymentWorkerEventReport" />
+				<ref bean="unemploymentWorkerCSVReport" />
+				<ref bean="unemploymentManagerEventReport" />
+				<ref bean="unemploymentManagerCSVReport" />
+				<ref bean="unemploymentTopManagerEventReport" />
+				<ref bean="unemploymentTopManagerCSVReport" />
+				<ref bean="unemploymentResearcherEventReport" />
+				<ref bean="unemploymentResearcherCSVReport" />
+				
+				<ref bean="microRealSalesKEventReport" />
+				<ref bean="microRealSalesKCSVReport" />
+				<ref bean="microRealSalesCEventReport" />
+				<ref bean="microRealSalesCCSVReport" />
+				<ref bean="microNominalSalesKEventReport" />
+				<ref bean="microNominalSalesKCSVReport" />
+				<ref bean="microNominalSalesCEventReport" />
+				<ref bean="microNominalSalesCCSVReport" />
+				
+				<ref bean="microExpAvVarCostsKEventReport" />
+				<ref bean="microExpAvVarCostsKCSVReport" />
+				<ref bean="microExpAvVarCostsCEventReport" />
+				<ref bean="microExpAvVarCostsCCSVReport" />
+				
+				<ref bean="microOutputKEventReport" />
+				<ref bean="microOutputKCSVReport" />
+				<ref bean="microOutputCEventReport" />
+				<ref bean="microOutputCCSVReport" />
+				<ref bean="microOutputCEventReport" />
+				<ref bean="microOutputCCSVReport" />
+				
+				<ref bean="kProductivityEventReport" />
+				<ref bean="kProductivityCSVReport" />
+				<ref bean="cProductivityEventReport" />
+				<ref bean="cProductivityCSVReport" />
+				
+				<ref bean="realConsEventReport" />
+				<ref bean="nominalConsEventReport" />
+				<ref bean="microNominalConsCSVReport" />
+				<ref bean="microRealConsCSVReport" />
+				<ref bean="realManagerConsEventReport" />
+				<ref bean="managerNominalConsEventReport" />
+				<ref bean="microManagerNominalConsCSVReport" />
+				<ref bean="microRealManagerConsCSVReport" />
+				<ref bean="realTopManagerConsEventReport" />
+				<ref bean="topManagerNominalConsEventReport" />
+				<ref bean="microTopManagerNominalConsCSVReport" />
+				<ref bean="microRealTopManagerConsCSVReport" />
+				<ref bean="realResearcherConsEventReport" />
+				<ref bean="researcherNominalConsEventReport" />
+				<ref bean="microResearcherNominalConsCSVReport" />
+				<ref bean="microRealResearcherConsCSVReport" />
+				<ref bean="microRealDesConsCSVReport" />
+				<ref bean="microRealDesConsEventReport" />	
+				<ref bean="microRealManagerDesConsCSVReport" />
+				<ref bean="microRealManagerDesConsEventReport" />
+				<ref bean="microRealTopManagerDesConsCSVReport" />
+				<ref bean="microRealTopManagerDesConsEventReport" />
+				<ref bean="microRealResearcherDesConsCSVReport" />
+				<ref bean="microRealResearcherDesConsEventReport" />
+				
+				
+				<ref bean="workersRealConsumptionEventReport" />
+				<ref bean="workersRealConsumptionCSVReport" />
+				<ref bean="workersRealDesConsumptionEventReport" />
+				<ref bean="workersRealDesConsumptionCSVReport" />
+				<ref bean="workersNominalConsumptionEventReport" />
+				<ref bean="workersNominalConsumptionCSVReport" />
+				<ref bean="managersRealConsumptionEventReport" />
+				<ref bean="managersRealConsumptionCSVReport" />
+				<ref bean="managersRealDesConsumptionEventReport" />
+				<ref bean="managersRealDesConsumptionCSVReport" />
+				<ref bean="managersNominalConsumptionEventReport" />
+				<ref bean="managersNominalConsumptionCSVReport" />
+				<ref bean="topManagersRealConsumptionEventReport" />
+				<ref bean="topManagersRealConsumptionCSVReport" />
+				<ref bean="topManagersRealDesConsumptionEventReport" />
+				<ref bean="topManagersRealDesConsumptionCSVReport" />
+				<ref bean="topManagersNominalConsumptionEventReport" />
+				<ref bean="topManagersNominalConsumptionCSVReport" />
+				<ref bean="researchersRealConsumptionEventReport" />
+				<ref bean="researchersRealConsumptionCSVReport" />
+				<ref bean="researchersRealDesConsumptionEventReport" />
+				<ref bean="researchersRealDesConsumptionCSVReport" />
+				<ref bean="researchersNominalConsumptionEventReport" />
+				<ref bean="researchersNominalConsumptionCSVReport" />
+				
+				
+				<ref bean="workersIncomeTaxRateEventReport" />
+				<ref bean="workersIncomeTaxRateCSVReport" />
+				<ref bean="managersIncomeTaxRateEventReport" />
+				<ref bean="managersIncomeTaxRateCSVReport" />
+				<ref bean="topManagersIncomeTaxRateEventReport" />
+				<ref bean="topManagersIncomeTaxRateCSVReport" />
+				<ref bean="workersWealthTaxRateEventReport" />
+				<ref bean="workersWealthTaxRateCSVReport" />
+				<ref bean="managersWealthTaxRateEventReport" />
+				<ref bean="managersWealthTaxRateCSVReport" />
+				<ref bean="topManagersWealthTaxRateEventReport" />
+				<ref bean="topManagersWealthTaxRateCSVReport" />
+				<ref bean="taxRateMultiplyingFactorEventReport" />
+				<ref bean="taxRateMultiplyingFactorCSVReport" />
+				
+				
+				<ref bean="nominalInvEventReport" />
+				<ref bean="microNominalInvCSVReport" />
+				<ref bean="realInvEventReport" />
+				<ref bean="microRealInvCSVReport" />
+				<ref bean="realDesInvEventReport" />
+				<ref bean="microRealDesInvCSVReport" />
+				
+				<ref bean="realCInventEventReport" />
+				<ref bean="microRealCInventCSVReport" />
+				<ref bean="realKInventEventReport" />
+				<ref bean="microRealKInventCSVReport" />
+				
+				<ref bean="cGrowthEventReport" />
+				<ref bean="microCGrowthCSVReport" />
+				
+				<ref bean="bankCreditEventReport" />
+				<ref bean="microBankCreditCSVReport" />
+				<ref bean="microBankCreditTimeSeriesChart" />
+				<ref bean="creditDegreeEventReport" />
+				<ref bean="creditDegreeCSVReport" />
+				
+				<ref bean="aggWorkersBSEventReport" />
+				<ref bean="aggWorkersBSCSVReport" />
+				<ref bean="aggManagersBSEventReport" />
+				<ref bean="aggManagersBSCSVReport" />
+				<ref bean="aggTopManagersBSEventReport" />
+				<ref bean="aggTopManagersBSCSVReport" />
+				<ref bean="aggResearchersBSEventReport" />
+				<ref bean="aggResearchersBSCSVReport" />
+				<ref bean="aggCFBSEventReport" />
+				<ref bean="aggCFBSCSVReport" />
+				<ref bean="aggKFBSEventReport" />
+				<ref bean="aggKFBSCSVReport" />
+				<ref bean="aggBBSEventReport" />
+				<ref bean="aggBBSCSVReport" />
+				<ref bean="aggGBSEventReport" />
+				<ref bean="aggGBSCSVReport" />
+				<ref bean="aggCBBSEventReport" />
+				<ref bean="aggCBBSCSVReport" />
+				
+				<ref bean="realCDesOutputEventReport" />
+				<ref bean="realCDesOutputCSVReport" />
+				<ref bean="realKDesOutputEventReport" />
+				<ref bean="realKDesOutputCSVReport" />
+				
+				<ref bean="cEmployeeEventReport" />
+				<ref bean="cEmployeeCSVReport" />		
+				<ref bean="kEmployeeEventReport" />
+				<ref bean="kEmployeeCSVReport" />
+				
+				<ref bean="banksProfitsEventReport" />
+				<ref bean="banksProfitsCSVReport" />
+				<ref bean="cFirmsProfitsEventReport" />
+				<ref bean="cFirmsProfitsCSVReport" />
+				<ref bean="kFirmsProfitsEventReport" />
+				<ref bean="kFirmsProfitsCSVReport" />
+				<ref bean="cOCFEventReport" />
+				<ref bean="cOCFCSVReport" />
+				<ref bean="kOCFEventReport" />
+				<ref bean="kOCFCSVReport" /> -->
+				
+				 <ref bean="workersWageEventReport" />
+				<ref bean="workersWageCSVReport" /> 
+				<ref bean="workersNetIncomeEventReport" />
+				<ref bean="workersNetIncomeCSVReport" />
+				<ref bean="managersWageEventReport" />
+				<ref bean="managersWageCSVReport" /> 
+				<ref bean="managersNetIncomeEventReport" />
+				<ref bean="managersNetIncomeCSVReport" />
+				<ref bean="topManagersWageEventReport" />
+				<ref bean="topManagersWageCSVReport" /> 
+				<ref bean="topManagersNetIncomeEventReport" />
+				<ref bean="topManagersNetIncomeCSVReport" />
+			 	<ref bean="researchersWageEventReport" />
+				<ref bean="researchersWageCSVReport" /> 
+				<ref bean="researchersNetIncomeEventReport" />
+				<ref bean="researchersNetIncomeCSVReport" />
+				
+				<!-- <ref bean="cFirmsPricesEventReport" />
+				<ref bean="cFirmsPricesCSVReport" />
+				<ref bean="kFirmsPricesEventReport" />
+				<ref bean="kFirmsPricesCSVReport" />
+					
+				<ref bean="kFirmsBankruptcyEventReport" />
+				<ref bean="kFirmsBankruptcyCSVReport" />
+				<ref bean="cFirmsBankruptcyEventReport" />
+				<ref bean="cFirmsBankruptcyCSVReport" />
+				<ref bean="banksBankruptcyEventReport" />
+				<ref bean="banksBankruptcyCSVReport" />
+				
+				<ref bean="cFirmsIREventReport" />
+				<ref bean="cFirmsIRCSVReport" />
+				<ref bean="kFirmsIREventReport" />
+				<ref bean="kFirmsIRCSVReport" /> 
+				<ref bean="hhIREventReport" />
+				<ref bean="hhIRCSVReport" />
+				<ref bean="hhIREventReport" />
+				<ref bean="hhIRCSVReport" />
+				<ref bean="cFirmsIPEventReport" />
+				<ref bean="cFirmsIPCSVReport" />
+				<ref bean="kFirmsIPEventReport" />
+				<ref bean="kFirmsIPCSVReport" />
+				
+				<ref bean="cFirmsDebtServiceEventReport" />
+				<ref bean="cFirmsDebtServiceCSVReport" />
+				<ref bean="kFirmsDebtServiceEventReport" />
+				<ref bean="kFirmsDebtServiceCSVReport" />
+				
+				
+				<ref bean="cFirmsWageBillEventReport" />
+				<ref bean="cFirmsWageBillCSVReport" />
+				<ref bean="kFirmsWageBillEventReport" />
+				<ref bean="kFirmsWageBillCSVReport" />
+				<ref bean="govWageBillEventReport" />
+				<ref bean="govWageBillCSVReport" />
+				<ref bean="govDoleEventReport" />
+				<ref bean="govDoleCSVReport" />
+				
+				<ref bean="cFirmsLevEventReport" />
+				<ref bean="cFirmsLevCSVReport" />
+				<ref bean="kFirmsLevEventReport" />
+				<ref bean="kFirmsLevCSVReport" />
+				
+				<ref bean="bMaxExposureEventReport" />
+				<ref bean="bMaxExposureCSVReport" />
+				
+				<ref bean="cCapacityEventReport" />
+				<ref bean="microCCapacityCSVReport" />	
+				<ref bean="cCapacityUtilizationEventReport" />
+				<ref bean="microCCapacityUtilizationCSVReport" />
+				
+				<ref bean="banksSpecificInterestEventReport" />
+				<ref bean="banksSpecificInterestCSVReport" />
+				
+				<ref bean="banksCREventReport" />
+				<ref bean="banksCRCSVReport" />
+				<ref bean="banksLREventReport" />
+				<ref bean="banksLRCSVReport" />
+				<ref bean="banksLossEventReport" />
+				<ref bean="banksLossCSVReport" />
+				
+				<ref bean="microTaxesBanksEventReport" />
+				<ref bean="microTaxesBanksCSVReport" />
+				<ref bean="microTaxesWorkersEventReport" />
+				<ref bean="microTaxesWorkersCSVReport" />
+				<ref bean="microTaxesCEventReport" />
+				<ref bean="microTaxesCCSVReport" />
+				<ref bean="microTaxesKEventReport" />
+				<ref bean="microTaxesKCSVReport" />
+				
+				
+				<ref bean="workersTaxesEventReport" />
+				<ref bean="workersTaxesCSVReport" />
+				<ref bean="managersTaxesEventReport" />
+				<ref bean="managersTaxesCSVReport" />
+				<ref bean="topManagersTaxesEventReport" />
+				<ref bean="topManagersTaxesCSVReport" />
+				<ref bean="researchersTaxesEventReport" />
+				<ref bean="researchersTaxesCSVReport" />
+				
+				<ref bean="microDividendsCEventReport" />
+				<ref bean="microDividendsCCSVReport" />
+				<ref bean="microDividendsKEventReport" />
+				<ref bean="microDividendsKCSVReport" />
+				<ref bean="microDividendsBanksEventReport" />
+				<ref bean="microDividendsBanksCSVReport" />
+				
+				<ref bean="microBailoutCostKEventReport" />
+				<ref bean="microBailoutCostKCSVReport" />
+				<ref bean="microBailoutCostCEventReport" />
+				<ref bean="microBailoutCostCCSVReport" />
+				<ref bean="microBailoutCostBanksEventReport" />
+				<ref bean="microBailoutCostBanksCSVReport" />
+				
+				<ref bean="banksDepositInterestEventReport" />
+				<ref bean="banksDepositInterestCSVReport" />
+				<ref bean="banksDepositsEventReport" />
+				<ref bean="banksDepositsCSVReport" />
+				
+				<ref bean="govInterestsBondsEventReport" />
+				<ref bean="govInterestsBondsCSVReport" />
+				
+				<ref bean="govCBProfitsEventReport" />
+				<ref bean="govCBProfitsCSVReport" />
+				
+				<ref bean="workersDepositsEventReport" />
+				<ref bean="workersDepositsCSVReport" />
+				<ref bean="managersDepositsEventReport" />
+				<ref bean="managersDepositsCSVReport" />
+				<ref bean="topManagersDepositsEventReport" />
+				<ref bean="topManagersDepositsCSVReport" />
+				<ref bean="researchersDepositsEventReport" />
+				<ref bean="researchersDepositsCSVReport" />
+				 -->
+				<!-- <ref bean="TFMEventReport" />
+				<ref bean="TFMCSVReport" /> -->
+			</list>
+		</property>
+		
+		<property name="modelDescription" 
+			value="Caiani et Al. - Innovation, Demand, and Finance in an Agent Based-Stock Flow Consistent model"/>
+			
+	</bean>
+
+	<bean id="fileNamePrefix" class="net.sourceforge.jabm.util.MutableStringWrapper"
+		scope="singleton">
+		<constructor-arg value="data/" />
+	</bean>
+
+</beans>
